@@ -1,0 +1,210 @@
+body{
+  padding: 0px;
+  margin: 0px;
+  background-color: white;
+  oldColor: #A0D9D9;
+  font-family: "Arial", "Courier New", sans-serif;
+  font-size: 20px;  
+}
+
+#buttonDiv{
+  position: absolute;
+  text-align: center;
+  
+}
+
+button{
+  background-color: #45858C;
+  color: white;
+  border-radius: 10px; 
+}
+
+
+#buttonDiv button{
+  margin: 5px;  
+}
+
+
+
+#canvasDiv{
+  position:absolute;
+  margin: 0px;
+  box-sizing: border-box;
+  margin: auto;
+}
+
+#canvas{
+  Position: absolute;
+}
+
+#inputTxt{
+  position: absolute;
+  z-index: 10;
+  background-color: #45858C;
+  color: white;
+  border-radius: 10px;
+}
+
+#helpButton{
+  position: absolute;
+  z-index: 10;
+  left: 50;
+  top: 50;
+}
+
+
+#imageLink{
+  text-align: center;
+  
+}
+
+a:link { 
+  text-decoration: none; 
+}
+
+#name{
+  font-family: "Lucida Handwriting", "Courier New", monospace;
+  font-weight: bold;
+  color: #D92B04;
+}
+
+h1{
+  font-family: "Lucida Handwriting", "cursive", monospace;
+  text-decoration: underline;
+  font-weight: bold;
+  color: #D92B04;
+}
+
+h2{
+  font-family: "Arial", "Courier New", sans-serif;
+  color: black;
+}
+
+#description{
+  font-family: "Arial", "Courier New", sans-serif;
+  color: black;
+}
+
+
+
+#descriptionSpan{
+  font-family: "Arial", "Courier New", sans-serif;
+  color: black;
+  font-size: 20px;
+  max-width: 600px;
+  margin: auto;
+}
+
+
+#buy{
+  font-family: "Arial", "Courier New", sans-serif;
+  color: black;
+  background-color: gold;
+  border-radius: 5px;
+  border: solid 2px black;
+  display: inline-block;
+  margin: 3px;
+  padding: 3px;
+}
+
+#image{
+  -webkit-filter: drop-shadow(5px 5px 5px #222222);
+  filter: drop-shadow(5px 5px 5px #222222);
+  z-index: 50;
+}
+
+
+
+#buyOptionsDiv{
+  padding:5px;
+  background:rgba(255, 255, 255, 1);
+  position: absolute;
+  z-index: 11;
+  mborder: 2px solid black;
+  width: 100%;
+  box-sizing: border-box;
+  display: block;
+  text-align: center;
+  overflow: scroll;
+}
+
+
+#buyOptionsDiv button{
+  background-color: gold;
+  color: black;
+  display: block;
+  margin: auto;
+  margin-top: 20px;
+  font-size: 20px;
+}
+
+
+#buyOptionsDiv #cancelButton{
+  background-color: #45858C;
+  color: white;
+}
+
+
+
+#viewCartButton{
+  position: relative;
+  mfloat: right;
+  margin: 5px;
+  z-index: 10;
+}
+
+
+#slideShowDiv{
+  background:rgba(255, 255, 255, 1);
+  position: absolute;
+  z-index: 11;
+  border: 2px solid black;
+  width: 100%;
+  box-sizing: border-box;
+  display: none;
+  text-align: center;
+  overflow: scroll;
+  padding: 5px;
+}
+
+
+#slideDiv{
+  position:relative;
+  width:100%;
+  max-width: 400px;
+  margin: auto;
+}
+
+#youtube{
+  max-width:400px;
+}
+
+#slide{
+  width:100%;  
+}
+
+
+
+#backArrow{
+ left:0px;
+ bottom: 0px; 
+  width:40%
+}
+
+#forwardArrow{
+  right:0px;
+  bottom: 0px;
+}
+
+#slideDiv button{
+  position:absolute;
+  width:20%;
+  height: 100%;
+  background-color:transparent;
+  outline:none;
+  border:none;
+  font-size:80px;
+  opacity:0.3;
+  -webkit-text-stroke: 2px black; /* width and color */
+
+}
