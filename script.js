@@ -427,7 +427,7 @@ downloadButton.onclick = function() {
   if(playing === true){
     if (confirm("Download 3 files \n cams.svg : for laser cutter \n cams.jpeg : for scroll saw \n sketch_coordinates.txt : to upload and replay your sketch")  == true) {
       saveTxt(sketchName + " sketch_coordinates");
-      saveSvg(camsSVG, sketchName + " cams");
+      saveSvg(camsSVG, sketchName + " cams "+ svgDpi + "dpi");
       saveJpeg(camsSVG, sketchName + " cams");
     } 
     else {
