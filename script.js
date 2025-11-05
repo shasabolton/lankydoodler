@@ -509,7 +509,7 @@ var shopDiv = document.createElement("div");
 canvasDiv.append(shopDiv);
 var image = document.createElement("img");
 image.id = "image";
-image.src = "https://cdn.glitch.global/71b232b6-8a22-4706-b0a0-7de978a8643c/low-iso-alphad-521px.png?v=1652315608755";
+image.src = "photos/low-iso-alphad-521px.png";
 shopDiv.append(image);
 
 
