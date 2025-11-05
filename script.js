@@ -1,4 +1,4 @@
-
+//line618 calcs in mm. Make dpi 96 var and mmToPx function to set all svg coords. jpg save function will need dpi changed, try pdf export
 //console
 
 
@@ -12,6 +12,8 @@ var pageCX = 0;
 var pageCY = 225;
 var pageR = 50;
 var screw = 5;//screw diameter
+var woodThickness = 3.2;
+var svgDpi = 96;
 //var width = 300;
 var screenHeight = (window.innerHeight > 0) ? window.innerHeight : screen.height;
 //var screenHeight = window.innerHeight;
@@ -591,6 +593,11 @@ function addTosketch(){
 
 
 
+function mmToPx(mm){
+  return svgDpi/25.4*mm;
+}
+
+
 var tricepCamCoords = [];//usual (zero,zero) at top pivot
 var bicepCamCoords = [];
 var inc
@@ -613,8 +620,8 @@ function calcCams(){
     //bicepXY[1]+=offset.y;
     if(i === 0){ bicepPathHTML+= 'M '; tricepPathHTML+= 'M ';}
     else{ bicepPathHTML+= ' L '; tricepPathHTML+= ' L ';}
-    bicepPathHTML += (bicepXY[0]  - camCX + camRMax)  + ' ' + (bicepXY[1] - camCY + camRMax);
-    tricepPathHTML += (tricepXY[0]  - camCX + camRMax + camRMax +20)  + ' ' + (tricepXY[1]  - camCY + camRMax);
+    bicepPathHTML += mmToPx(bicepXY[0]  - camCX + camRMax)  + ' ' + mmToPx(bicepXY[1] - camCY + camRMax);
+    tricepPathHTML += mmToPx(tricepXY[0]  - camCX + camRMax + camRMax +20)  + ' ' + mmToPx(tricepXY[1]  - camCY + camRMax);
     if(i === sketch.length - 1){bicepPathHTML+= 'z '; tricepPathHTML+= 'z ';}
    
     
@@ -626,19 +633,19 @@ function calcCams(){
   
   //cam joining screw holes
   //bicepPathHTML += '<circle cx="'+ (camCX + offset.x) + '" cy="' + (camCY + offset.y) +'" r="' + screw/2 +'" fill="transparent" stroke="' + bicepColor +'"/>'; 
-  bicepPathHTML += '<circle cx="'+ (camCX  - camCX + camRMax +7) + '" cy="' + (camCY  - camCY + camRMax - 7) +'" r="' + 2 +'" fill="transparent" stroke="' + bicepColor + '" stroke-width="' +strokeWidth+'" />';
-  tricepPathHTML += '<circle cx="'+ (camCX - camCX + camRMax +7 + camRMax +20) + '" cy="' + (camCY  - camCY + camRMax - 7) +'" r="' + 2.6 +'" fill="transparent" stroke="' + tricepColor + '" stroke-width="' +strokeWidth+'" />';
+  bicepPathHTML += '<circle cx="'+ mmToPx(camCX  - camCX + camRMax +7) + '" cy="' + mmToPx(camCY  - camCY + camRMax - 7) +'" r="' + mmToPx(2) +'" fill="transparent" stroke="' + bicepColor + '" stroke-width="' +strokeWidth+'" />';
+  tricepPathHTML += '<circle cx="'+ mmToPx(camCX - camCX + camRMax +7 + camRMax +20) + '" cy="' + mmToPx(camCY  - camCY + camRMax - 7) +'" r="' + mmToPx(2.6) +'" fill="transparent" stroke="' + tricepColor + '" stroke-width="' +strokeWidth+'" />';
 
   //center cross
   var crossWidth = 19;
-  bicepPathHTML += '<rect x="' +  (camCX -crossWidth/2 - camCX + camRMax) +'" y="'+ (camCY -1.5  - camCY + camRMax) +'" width="'+crossWidth+'" height="'+3+'" fill="transparent" stroke="' + bicepColor + '" stroke-width="' +strokeWidth+'" />'; 
-  bicepPathHTML += '<rect x="' +  (camCX -1.5  - camCX + camRMax) +'" y="'+ (camCY -crossWidth/2 - camCY + camRMax) +'" width="'+3+'" height="'+crossWidth+'" fill="transparent" stroke="' + bicepColor + '" stroke-width="' +strokeWidth+'" />';   
-  tricepPathHTML += '<rect x="' +  (camCX -crossWidth/2  - camCX + camRMax + camRMax +20) +'" y="'+ (camCY -1.5  - camCY + camRMax) +'" width="'+crossWidth+'" height="'+3+'" fill="transparent" stroke="' + tricepColor + '" stroke-width="' +strokeWidth+'" />'; 
-  tricepPathHTML += '<rect x="' +  (camCX -1.5  - camCX + camRMax + camRMax + 20) +'" y="'+ (camCY -crossWidth/2  - camCY + camRMax) +'" width="'+3+'" height="'+crossWidth+'" fill="transparent" stroke="' + tricepColor + '" stroke-width="' +strokeWidth+'" />';
+  bicepPathHTML += '<rect x="' +  mmToPx(camCX -crossWidth/2 - camCX + camRMax) +'" y="'+ mmToPx(camCY -woodThickness/2  - camCY + camRMax) +'" width="'+mmToPx(crossWidth)+'" height="'+mmToPx(woodThickness)+'" fill="transparent" stroke="' + bicepColor + '" stroke-width="' +strokeWidth+'" />'; 
+  bicepPathHTML += '<rect x="' +  mmToPx(camCX -woodThickness/2  - camCX + camRMax) +'" y="'+ mmToPx(camCY -crossWidth/2 - camCY + camRMax) +'" width="'+mmToPx(woodThickness)+'" height="'+mmToPx(crossWidth)+'" fill="transparent" stroke="' + bicepColor + '" stroke-width="' +strokeWidth+'" />';   
+  tricepPathHTML += '<rect x="' +  mmToPx(camCX -crossWidth/2  - camCX + camRMax + camRMax +20) +'" y="'+ mmToPx(camCY -woodThickness/2  - camCY + camRMax) +'" width="'+mmToPx(crossWidth)+'" height="'+mmToPx(woodThickness)+'" fill="transparent" stroke="' + tricepColor + '" stroke-width="' +strokeWidth+'" />'; 
+  tricepPathHTML += '<rect x="' +  mmToPx(camCX -woodThickness/2  - camCX + camRMax + camRMax + 20) +'" y="'+ mmToPx(camCY -crossWidth/2  - camCY + camRMax) +'" width="'+mmToPx(woodThickness)+'" height="'+mmToPx(crossWidth)+'" fill="transparent" stroke="' + tricepColor + '" stroke-width="' +strokeWidth+'" />';
   
   //labels
-  bicepPathHTML += '<text x="' + (camCX  - camCX + camRMax - 5) +'" y="' + (camCY + - crossWidth - camCY + camRMax) + '" style="font: bold 20px sans-serif;" '+' fill="transparent" stroke="' + bicepColor + '" stroke-width="' +strokeWidth+'">b</text>';
-  tricepPathHTML += '<text x="' + (camCX  - camCX + camRMax - 5 +camRMax +20) +'" y="' + (camCY + - crossWidth  - camCY + camRMax) + '" style="font: bold 20px sans-serif;" '+' fill="transparent" stroke="' + tricepColor + '" stroke-width="' +strokeWidth+'">t</text>'
+  bicepPathHTML += '<text x="' + mmToPx(camRMax - camRMin+5) +'" y="' + mmToPx(camCY + - crossWidth - camCY + camRMax) + '" style="font: bold sans-serif; font-size:20px;" '+' fill="transparent" stroke="' + bicepColor + '" stroke-width="' +strokeWidth+'">'+sketchName+', BOTTOM CAM, SLOTS = ' + woodThickness +'mm</text>';
+  tricepPathHTML += '<text x="' + mmToPx(camRMax-camRMin+5+camRMax+20) +'" y="' + mmToPx(camCY + - crossWidth  - camCY + camRMax) + '" style="font: bold sans-serif; font-size:20px;" '+' fill="transparent" stroke="' + tricepColor + '" stroke-width="' +strokeWidth+'">'+sketchName+', TOP CAM, SLOTS = '+woodThickness+'mm</text>'
  
   
   
@@ -648,8 +655,8 @@ function calcCams(){
      camsSVG.setAttribute("xmlns","http://www.w3.org/2000/svg");
      camsSVG.id = "camsSVG";
      //document.body.append(camsSVG);
-     camsSVG.setAttribute("height", "210px");
-     camsSVG.setAttribute("width", "297px");
+     camsSVG.setAttribute("height", mmToPx(210)+"px");
+     camsSVG.setAttribute("width", mmToPx(297)+"px");
      
   } 
   camsSVG.innerHTML = bicepPathHTML + tricepPathHTML;
@@ -690,22 +697,8 @@ function saveTxt(name) {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 function saveJpeg(svg, name) {
-  var dpmm = 3.78;
+  var dpmm = 1;// svg is now in 96dpi anyway 3.78;
   var origHTML = svg.innerHTML; //make a copy 
   //add white backgound
   svg.innerHTML = '<rect width="100%" height="100%" fill="white"/>' + svg.innerHTML;
